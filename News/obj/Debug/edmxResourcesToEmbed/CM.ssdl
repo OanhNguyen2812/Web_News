@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CMModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cm">
+    <Key>
+      <PropertyRef Name="ID_ChuyenMuc" />
+    </Key>
+    <Property Name="ID_ChuyenMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenChuyenMuc" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_ChuyenMucCha" Type="int" />
+  </EntityType>
+  <EntityContainer Name="CMModel1StoreContainer">
+    <EntitySet Name="cm" EntityType="Self.cm" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

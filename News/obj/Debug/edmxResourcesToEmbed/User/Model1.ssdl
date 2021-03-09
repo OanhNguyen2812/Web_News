@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewsModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Anh">
+    <Key>
+      <PropertyRef Name="ID_Anh" />
+    </Key>
+    <Property Name="ID_Anh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_BaiViet" Type="int" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="ViTri" Type="int" />
+    <Property Name="Tieude" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="ID_BaiViet" />
+    </Key>
+    <Property Name="ID_BaiViet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenBaiViet" Type="nvarchar(max)" />
+    <Property Name="ID_User" Type="int" />
+    <Property Name="ID_ChuyenMuc" Type="int" />
+    <Property Name="AnhThumbnail" Type="nvarchar(max)" />
+    <Property Name="TomTat" Type="nvarchar(max)" />
+    <Property Name="TrangThai" Type="bit" />
+    <Property Name="TGViet" Type="datetime" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ChuyenMuc">
+    <Key>
+      <PropertyRef Name="ID_ChuyenMuc" />
+    </Key>
+    <Property Name="ID_ChuyenMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenChuyenMuc" Type="nvarchar(max)" />
+    <Property Name="ID_ChuyenMucCha" Type="int" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="ID_Comment" />
+    </Key>
+    <Property Name="ID_Comment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_BaiViet" Type="int" />
+    <Property Name="ID_Reader" Type="int" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LoaiTK">
+    <Key>
+      <PropertyRef Name="ID_LoaiTK" />
+    </Key>
+    <Property Name="ID_LoaiTK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiTK" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LoginReader">
+    <Key>
+      <PropertyRef Name="ID_Reader" />
+    </Key>
+    <Property Name="ID_Reader" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Avatar" Type="nvarchar(max)" />
+    <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LSBaiViet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_User" Type="int" />
+    <Property Name="ID_BaiViet" Type="int" />
+    <Property Name="Time" Type="datetime" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="QuangCao">
+    <Key>
+      <PropertyRef Name="ID_QuangCao" />
+    </Key>
+    <Property Name="ID_QuangCao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CongTy" Type="nvarchar" MaxLength="50" />
+    <Property Name="URL" Type="nvarchar" MaxLength="50" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
+    <Property Name="NgayDang" Type="date" />
+    <Property Name="NgayKetThuc" Type="date" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_User" Type="int" Nullable="false" />
+    <Property Name="ID_ChuyenMuc" Type="int" />
+    <Property Name="ID_LoaiTK" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnhDaiDien" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="NgheDanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_LoaiTK" Type="int" />
+  </EntityType>
+  <Association Name="FK_Anh_BaiViet">
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaiViet_ChuyenMuc">
+    <End Role="ChuyenMuc" Type="Self.ChuyenMuc" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenMuc">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaiViet_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_BaiViet">
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_LoginReader">
+    <End Role="LoginReader" Type="Self.LoginReader" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginReader">
+        <PropertyRef Name="ID_Reader" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LSBaiViet_BaiViet">
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+    <End Role="LSBaiViet" Type="Self.LSBaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="LSBaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LSBaiViet_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="LSBaiViet" Type="Self.LSBaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="LSBaiViet">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_ChuyenMuc">
+    <End Role="ChuyenMuc" Type="Self.ChuyenMuc" Multiplicity="0..1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenMuc">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_LoaiTK">
+    <End Role="LoaiTK" Type="Self.LoaiTK" Multiplicity="0..1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiTK">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_LoaiTK">
+    <End Role="LoaiTK" Type="Self.LoaiTK" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiTK">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="NewsModel1StoreContainer">
+    <EntitySet Name="Anh" EntityType="Self.Anh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChuyenMuc" EntityType="Self.ChuyenMuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiTK" EntityType="Self.LoaiTK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginReader" EntityType="Self.LoginReader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LSBaiViet" EntityType="Self.LSBaiViet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuangCao" EntityType="Self.QuangCao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Anh_BaiViet" Association="Self.FK_Anh_BaiViet">
+      <End Role="BaiViet" EntitySet="BaiViet" />
+      <End Role="Anh" EntitySet="Anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaiViet_ChuyenMuc" Association="Self.FK_BaiViet_ChuyenMuc">
+      <End Role="ChuyenMuc" EntitySet="ChuyenMuc" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaiViet_User" Association="Self.FK_BaiViet_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_BaiViet" Association="Self.FK_Comment_BaiViet">
+      <End Role="BaiViet" EntitySet="BaiViet" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_LoginReader" Association="Self.FK_Comment_LoginReader">
+      <End Role="LoginReader" EntitySet="LoginReader" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LSBaiViet_BaiViet" Association="Self.FK_LSBaiViet_BaiViet">
+      <End Role="BaiViet" EntitySet="BaiViet" />
+      <End Role="LSBaiViet" EntitySet="LSBaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LSBaiViet_User" Association="Self.FK_LSBaiViet_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="LSBaiViet" EntitySet="LSBaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_ChuyenMuc" Association="Self.FK_Role_ChuyenMuc">
+      <End Role="ChuyenMuc" EntitySet="ChuyenMuc" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_LoaiTK" Association="Self.FK_Role_LoaiTK">
+      <End Role="LoaiTK" EntitySet="LoaiTK" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_User" Association="Self.FK_Role_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_LoaiTK" Association="Self.FK_User_LoaiTK">
+      <End Role="LoaiTK" EntitySet="LoaiTK" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

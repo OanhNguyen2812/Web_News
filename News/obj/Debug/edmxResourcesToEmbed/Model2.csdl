@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Anh">
+    <Key>
+      <PropertyRef Name="ID_Anh" />
+    </Key>
+    <Property Name="ID_Anh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_BaiViet" Type="Int32" />
+    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ViTri" Type="Int32" />
+    <Property Name="Tieude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiViet" Relationship="Self.FK_Anh_BaiViet" FromRole="Anh" ToRole="BaiViet" />
+  </EntityType>
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="ID_BaiViet" />
+    </Key>
+    <Property Name="ID_BaiViet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBaiViet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID_User" Type="Int32" />
+    <Property Name="ID_ChuyenMuc" Type="Int32" />
+    <Property Name="AnhThumbnail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TomTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="TGViet" Type="DateTime" Precision="3" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LuotXem" Type="Int32" />
+    <NavigationProperty Name="Anh" Relationship="Self.FK_Anh_BaiViet" FromRole="BaiViet" ToRole="Anh" />
+    <NavigationProperty Name="ChuyenMuc" Relationship="Self.FK_BaiViet_ChuyenMuc" FromRole="BaiViet" ToRole="ChuyenMuc" />
+    <NavigationProperty Name="User" Relationship="Self.FK_BaiViet_User" FromRole="BaiViet" ToRole="User" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_BaiViet" FromRole="BaiViet" ToRole="Comment" />
+    <NavigationProperty Name="LSBaiViet" Relationship="Self.FK_LSBaiViet_BaiViet" FromRole="BaiViet" ToRole="LSBaiViet" />
+  </EntityType>
+  <EntityType Name="ChuyenMuc">
+    <Key>
+      <PropertyRef Name="ID_ChuyenMuc" />
+    </Key>
+    <Property Name="ID_ChuyenMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenChuyenMuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID_ChuyenMucCha" Type="Int32" />
+    <NavigationProperty Name="BaiViet" Relationship="Self.FK_BaiViet_ChuyenMuc" FromRole="ChuyenMuc" ToRole="BaiViet" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Role_ChuyenMuc" FromRole="ChuyenMuc" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="ID_Comment" />
+    </Key>
+    <Property Name="ID_Comment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_BaiViet" Type="Int32" />
+    <Property Name="ID_Reader" Type="Int32" />
+    <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="BaiViet" Relationship="Self.FK_Comment_BaiViet" FromRole="Comment" ToRole="BaiViet" />
+    <NavigationProperty Name="LoginReader" Relationship="Self.FK_Comment_LoginReader" FromRole="Comment" ToRole="LoginReader" />
+  </EntityType>
+  <EntityType Name="LoaiTK">
+    <Key>
+      <PropertyRef Name="ID_LoaiTK" />
+    </Key>
+    <Property Name="ID_LoaiTK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiTK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Role_LoaiTK" FromRole="LoaiTK" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_LoaiTK" FromRole="LoaiTK" ToRole="User" />
+  </EntityType>
+  <EntityType Name="LoginReader">
+    <Key>
+      <PropertyRef Name="ID_Reader" />
+    </Key>
+    <Property Name="ID_Reader" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_LoginReader" FromRole="LoginReader" ToRole="Comment" />
+  </EntityType>
+  <EntityType Name="LSBaiViet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_User" Type="Int32" />
+    <Property Name="ID_BaiViet" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiViet" Relationship="Self.FK_LSBaiViet_BaiViet" FromRole="LSBaiViet" ToRole="BaiViet" />
+    <NavigationProperty Name="User" Relationship="Self.FK_LSBaiViet_User" FromRole="LSBaiViet" ToRole="User" />
+  </EntityType>
+  <EntityType Name="QuangCao">
+    <Key>
+      <PropertyRef Name="ID_QuangCao" />
+    </Key>
+    <Property Name="ID_QuangCao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CongTy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDang" Type="DateTime" Precision="0" />
+    <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_User" Type="Int32" Nullable="false" />
+    <Property Name="ID_ChuyenMuc" Type="Int32" />
+    <Property Name="ID_LoaiTK" Type="Int32" />
+    <NavigationProperty Name="ChuyenMuc" Relationship="Self.FK_Role_ChuyenMuc" FromRole="Role" ToRole="ChuyenMuc" />
+    <NavigationProperty Name="LoaiTK" Relationship="Self.FK_Role_LoaiTK" FromRole="Role" ToRole="LoaiTK" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Role_User" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ThongKe">
+    <Key>
+      <PropertyRef Name="ID_ThongKe" />
+    </Key>
+    <Property Name="ID_ThongKe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="LuotTruyCap" Type="Int64" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgheDanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_LoaiTK" Type="Int32" />
+    <NavigationProperty Name="BaiViet" Relationship="Self.FK_BaiViet_User" FromRole="User" ToRole="BaiViet" />
+    <NavigationProperty Name="LoaiTK" Relationship="Self.FK_User_LoaiTK" FromRole="User" ToRole="LoaiTK" />
+    <NavigationProperty Name="LSBaiViet" Relationship="Self.FK_LSBaiViet_User" FromRole="User" ToRole="LSBaiViet" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Role_User" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Anh_BaiViet">
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaiViet_ChuyenMuc">
+    <End Role="ChuyenMuc" Type="Self.ChuyenMuc" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenMuc">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaiViet_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_BaiViet">
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LSBaiViet_BaiViet">
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+    <End Role="LSBaiViet" Type="Self.LSBaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="LSBaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_ChuyenMuc">
+    <End Role="ChuyenMuc" Type="Self.ChuyenMuc" Multiplicity="0..1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenMuc">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_LoginReader">
+    <End Role="LoginReader" Type="Self.LoginReader" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginReader">
+        <PropertyRef Name="ID_Reader" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_LoaiTK">
+    <End Role="LoaiTK" Type="Self.LoaiTK" Multiplicity="0..1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiTK">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_LoaiTK">
+    <End Role="LoaiTK" Type="Self.LoaiTK" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiTK">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LSBaiViet_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="LSBaiViet" Type="Self.LSBaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="LSBaiViet">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NewsEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Anh" EntityType="Self.Anh" />
+    <EntitySet Name="BaiViet" EntityType="Self.BaiViet" />
+    <EntitySet Name="ChuyenMuc" EntityType="Self.ChuyenMuc" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" />
+    <EntitySet Name="LoaiTK" EntityType="Self.LoaiTK" />
+    <EntitySet Name="LoginReader" EntityType="Self.LoginReader" />
+    <EntitySet Name="LSBaiViet" EntityType="Self.LSBaiViet" />
+    <EntitySet Name="QuangCao" EntityType="Self.QuangCao" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="ThongKe" EntityType="Self.ThongKe" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_Anh_BaiViet" Association="Self.FK_Anh_BaiViet">
+      <End Role="BaiViet" EntitySet="BaiViet" />
+      <End Role="Anh" EntitySet="Anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaiViet_ChuyenMuc" Association="Self.FK_BaiViet_ChuyenMuc">
+      <End Role="ChuyenMuc" EntitySet="ChuyenMuc" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaiViet_User" Association="Self.FK_BaiViet_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_BaiViet" Association="Self.FK_Comment_BaiViet">
+      <End Role="BaiViet" EntitySet="BaiViet" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LSBaiViet_BaiViet" Association="Self.FK_LSBaiViet_BaiViet">
+      <End Role="BaiViet" EntitySet="BaiViet" />
+      <End Role="LSBaiViet" EntitySet="LSBaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_ChuyenMuc" Association="Self.FK_Role_ChuyenMuc">
+      <End Role="ChuyenMuc" EntitySet="ChuyenMuc" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_LoginReader" Association="Self.FK_Comment_LoginReader">
+      <End Role="LoginReader" EntitySet="LoginReader" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_LoaiTK" Association="Self.FK_Role_LoaiTK">
+      <End Role="LoaiTK" EntitySet="LoaiTK" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_LoaiTK" Association="Self.FK_User_LoaiTK">
+      <End Role="LoaiTK" EntitySet="LoaiTK" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LSBaiViet_User" Association="Self.FK_LSBaiViet_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="LSBaiViet" EntitySet="LSBaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_User" Association="Self.FK_Role_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <FunctionImport Name="spThongKe_Edit" ReturnType="Collection(NewsModel1.spThongKe_Edit_Result)" />
+  </EntityContainer>
+  <ComplexType Name="spThongKe_Edit_Result">
+    <Property Type="Int64" Name="HomNay" Nullable="true" />
+    <Property Type="Int64" Name="HomQua" Nullable="true" />
+    <Property Type="Int64" Name="TuanNay" Nullable="true" />
+    <Property Type="Int64" Name="TuanTruoc" Nullable="true" />
+    <Property Type="Int64" Name="ThangNay" Nullable="true" />
+    <Property Type="Int64" Name="ThangTruoc" Nullable="true" />
+    <Property Type="Int64" Name="TatCa" Nullable="true" />
+  </ComplexType>
+</Schema>

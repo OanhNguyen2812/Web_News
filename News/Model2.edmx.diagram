@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7915967e5cef42efad8a0485d22b9527" Name="Diagram1">
+        <EntityTypeShape EntityType="NewsModel1.Anh" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.BaiViet" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.ChuyenMuc" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.Comment" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.LoaiTK" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.LoginReader" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.LSBaiViet" Width="1.5" PointX="10.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.QuangCao" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.Role" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.ThongKe" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel1.User" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="NewsModel1.FK_Anh_BaiViet" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_BaiViet_ChuyenMuc" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_BaiViet_User" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_Comment_BaiViet" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_LSBaiViet_BaiViet" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_Role_ChuyenMuc" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_Comment_LoginReader" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_Role_LoaiTK" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_User_LoaiTK" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_LSBaiViet_User" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsModel1.FK_Role_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

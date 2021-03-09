@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NewsModelStoreContainer" CdmEntityContainer="NewsEntities">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="NewsModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="NewsModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="NewsModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="NewsModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NewsModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="NewsModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NewsModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="NewsModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="NewsModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="BaiViet">
+      <EntityTypeMapping TypeName="NewsModel.BaiViet">
+        <MappingFragment StoreEntitySet="BaiViet">
+          <ScalarProperty Name="TomTat" ColumnName="TomTat" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TGViet" ColumnName="TGViet" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="ID_ChuyenMuc" ColumnName="ID_ChuyenMuc" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="TenBaiViet" ColumnName="TenBaiViet" />
+          <ScalarProperty Name="ID_BaiViet" ColumnName="ID_BaiViet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChuyenMucCha">
+      <EntityTypeMapping TypeName="NewsModel.ChuyenMucCha">
+        <MappingFragment StoreEntitySet="ChuyenMucCha">
+          <ScalarProperty Name="TenChuyenMucCha" ColumnName="TenChuyenMucCha" />
+          <ScalarProperty Name="ID_ChuyenMucCha" ColumnName="ID_ChuyenMucCha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChuyenMucCon">
+      <EntityTypeMapping TypeName="NewsModel.ChuyenMucCon">
+        <MappingFragment StoreEntitySet="ChuyenMucCon">
+          <ScalarProperty Name="ID_ChuyenMucCha" ColumnName="ID_ChuyenMucCha" />
+          <ScalarProperty Name="TenChuyenMuc" ColumnName="TenChuyenMuc" />
+          <ScalarProperty Name="ID_ChuyenMuc" ColumnName="ID_ChuyenMuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="NewsModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="TenReader" ColumnName="TenReader" />
+          <ScalarProperty Name="ID_Reader" ColumnName="ID_Reader" />
+          <ScalarProperty Name="ID_BaiViet" ColumnName="ID_BaiViet" />
+          <ScalarProperty Name="ID_Comment" ColumnName="ID_Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryBaiViet">
+      <EntityTypeMapping TypeName="NewsModel.HistoryBaiViet">
+        <MappingFragment StoreEntitySet="HistoryBaiViet">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="ID_BaiViet" ColumnName="ID_BaiViet" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiTK">
+      <EntityTypeMapping TypeName="NewsModel.LoaiTK">
+        <MappingFragment StoreEntitySet="LoaiTK">
+          <ScalarProperty Name="LoaiTK1" ColumnName="LoaiTK" />
+          <ScalarProperty Name="ID_LoaiTK" ColumnName="ID_LoaiTK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuangCao">
+      <EntityTypeMapping TypeName="NewsModel.QuangCao">
+        <MappingFragment StoreEntitySet="QuangCao">
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ID_QuangCao" ColumnName="ID_QuangCao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="NewsModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID_ChuyenMucCha" ColumnName="ID_ChuyenMucCha" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NewsModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="NewsModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="KichHoat" ColumnName="KichHoat" />
+          <ScalarProperty Name="NgayDK" ColumnName="NgayDK" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="NgheDanh" ColumnName="NgheDanh" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="ID_LoaiTK" ColumnName="ID_LoaiTK" />
+          <ScalarProperty Name="TenUser" ColumnName="TenUser" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

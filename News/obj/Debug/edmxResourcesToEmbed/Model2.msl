@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NewsModel1StoreContainer" CdmEntityContainer="NewsEntities2">
+    <EntitySetMapping Name="Anh">
+      <EntityTypeMapping TypeName="NewsModel1.Anh">
+        <MappingFragment StoreEntitySet="Anh">
+          <ScalarProperty Name="ID_Anh" ColumnName="ID_Anh" />
+          <ScalarProperty Name="ID_BaiViet" ColumnName="ID_BaiViet" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+          <ScalarProperty Name="Tieude" ColumnName="Tieude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaiViet">
+      <EntityTypeMapping TypeName="NewsModel1.BaiViet">
+        <MappingFragment StoreEntitySet="BaiViet">
+          <ScalarProperty Name="ID_BaiViet" ColumnName="ID_BaiViet" />
+          <ScalarProperty Name="TenBaiViet" ColumnName="TenBaiViet" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="ID_ChuyenMuc" ColumnName="ID_ChuyenMuc" />
+          <ScalarProperty Name="AnhThumbnail" ColumnName="AnhThumbnail" />
+          <ScalarProperty Name="TomTat" ColumnName="TomTat" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="TGViet" ColumnName="TGViet" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="LuotXem" ColumnName="LuotXem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChuyenMuc">
+      <EntityTypeMapping TypeName="NewsModel1.ChuyenMuc">
+        <MappingFragment StoreEntitySet="ChuyenMuc">
+          <ScalarProperty Name="ID_ChuyenMuc" ColumnName="ID_ChuyenMuc" />
+          <ScalarProperty Name="TenChuyenMuc" ColumnName="TenChuyenMuc" />
+          <ScalarProperty Name="ID_ChuyenMucCha" ColumnName="ID_ChuyenMucCha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="NewsModel1.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="ID_Comment" ColumnName="ID_Comment" />
+          <ScalarProperty Name="ID_BaiViet" ColumnName="ID_BaiViet" />
+          <ScalarProperty Name="ID_Reader" ColumnName="ID_Reader" />
+          <ScalarProperty Name="Comment1" ColumnName="Comment" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiTK">
+      <EntityTypeMapping TypeName="NewsModel1.LoaiTK">
+        <MappingFragment StoreEntitySet="LoaiTK">
+          <ScalarProperty Name="ID_LoaiTK" ColumnName="ID_LoaiTK" />
+          <ScalarProperty Name="TenLoaiTK" ColumnName="TenLoaiTK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginReader">
+      <EntityTypeMapping TypeName="NewsModel1.LoginReader">
+        <MappingFragment StoreEntitySet="LoginReader">
+          <ScalarProperty Name="ID_Reader" ColumnName="ID_Reader" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LSBaiViet">
+      <EntityTypeMapping TypeName="NewsModel1.LSBaiViet">
+        <MappingFragment StoreEntitySet="LSBaiViet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="ID_BaiViet" ColumnName="ID_BaiViet" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuangCao">
+      <EntityTypeMapping TypeName="NewsModel1.QuangCao">
+        <MappingFragment StoreEntitySet="QuangCao">
+          <ScalarProperty Name="ID_QuangCao" ColumnName="ID_QuangCao" />
+          <ScalarProperty Name="CongTy" ColumnName="CongTy" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="NewsModel1.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="ID_ChuyenMuc" ColumnName="ID_ChuyenMuc" />
+          <ScalarProperty Name="ID_LoaiTK" ColumnName="ID_LoaiTK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongKe">
+      <EntityTypeMapping TypeName="NewsModel1.ThongKe">
+        <MappingFragment StoreEntitySet="ThongKe">
+          <ScalarProperty Name="ID_ThongKe" ColumnName="ID_ThongKe" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="LuotTruyCap" ColumnName="LuotTruyCap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="NewsModel1.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="TenUser" ColumnName="TenUser" />
+          <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="NgheDanh" ColumnName="NgheDanh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID_LoaiTK" ColumnName="ID_LoaiTK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spThongKe_Edit" FunctionName="NewsModel1.Store.spThongKe_Edit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NewsModel1.spThongKe_Edit_Result">
+          <ScalarProperty Name="HomNay" ColumnName="HomNay" />
+          <ScalarProperty Name="HomQua" ColumnName="HomQua" />
+          <ScalarProperty Name="TuanNay" ColumnName="TuanNay" />
+          <ScalarProperty Name="TuanTruoc" ColumnName="TuanTruoc" />
+          <ScalarProperty Name="ThangNay" ColumnName="ThangNay" />
+          <ScalarProperty Name="ThangTruoc" ColumnName="ThangTruoc" />
+          <ScalarProperty Name="TatCa" ColumnName="TatCa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

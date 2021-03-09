@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e914469501064b2ea985851a28a15e89" Name="Diagram1">
+        <EntityTypeShape EntityType="NewsModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.875" />
+        <EntityTypeShape EntityType="NewsModel.tb_BaiViet" Width="1.5" PointX="6" PointY="3.75" />
+        <EntityTypeShape EntityType="NewsModel.tb_ChuyenMuc" Width="1.5" PointX="3.75" PointY="1.5" />
+        <EntityTypeShape EntityType="NewsModel.tb_Comment" Width="1.5" PointX="8.25" PointY="4.5" />
+        <EntityTypeShape EntityType="NewsModel.tb_LoaiTK" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NewsModel.tb_LSBaiViet" Width="1.5" PointX="8.25" PointY="1.375" />
+        <EntityTypeShape EntityType="NewsModel.tb_QuangCao" Width="1.5" PointX="4.75" PointY="8.875" />
+        <EntityTypeShape EntityType="NewsModel.tb_Role" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="NewsModel.tb_User" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NewsModel.ThongKe" Width="1.5" PointX="6.75" PointY="8.875" />
+        <AssociationConnector Association="NewsModel.FK_tb_BaiViet_tb_ChuyenMuc" />
+        <AssociationConnector Association="NewsModel.FK_tb_BaiViet_tb_User" />
+        <AssociationConnector Association="NewsModel.FK_tb_Comment_tb_BaiViet" />
+        <AssociationConnector Association="NewsModel.FK_tb_LSBaiViet_tb_BaiViet" />
+        <AssociationConnector Association="NewsModel.FK_tb_Role_tb_ChuyenMuc" />
+        <AssociationConnector Association="NewsModel.FK_tb_Comment_tb_User" />
+        <AssociationConnector Association="NewsModel.FK_tb_Role_tb_LoaiTK" />
+        <AssociationConnector Association="NewsModel.FK_tb_LSBaiViet_tb_User" />
+        <AssociationConnector Association="NewsModel.FK_tb_Role_tb_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

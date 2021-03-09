@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="NewsEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(NewsModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(NewsModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spThongKe_Edit" ReturnType="Collection(NewsModel.spThongKe_Edit_Result)" />
+    <EntitySet Name="sysdiagrams" EntityType="NewsModel.sysdiagrams" />
+    <EntitySet Name="tb_BaiViet" EntityType="NewsModel.tb_BaiViet" />
+    <EntitySet Name="tb_ChuyenMuc" EntityType="NewsModel.tb_ChuyenMuc" />
+    <EntitySet Name="tb_Comment" EntityType="NewsModel.tb_Comment" />
+    <EntitySet Name="tb_LoaiTK" EntityType="NewsModel.tb_LoaiTK" />
+    <EntitySet Name="tb_LSBaiViet" EntityType="NewsModel.tb_LSBaiViet" />
+    <EntitySet Name="tb_QuangCao" EntityType="NewsModel.tb_QuangCao" />
+    <EntitySet Name="tb_Role" EntityType="NewsModel.tb_Role" />
+    <EntitySet Name="tb_User" EntityType="NewsModel.tb_User" />
+    <EntitySet Name="ThongKe" EntityType="NewsModel.ThongKe" />
+    <AssociationSet Name="FK_tb_BaiViet_tb_ChuyenMuc" Association="NewsModel.FK_tb_BaiViet_tb_ChuyenMuc">
+      <End Role="tb_ChuyenMuc" EntitySet="tb_ChuyenMuc" />
+      <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_BaiViet_tb_User" Association="NewsModel.FK_tb_BaiViet_tb_User">
+      <End Role="tb_User" EntitySet="tb_User" />
+      <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Comment_tb_BaiViet" Association="NewsModel.FK_tb_Comment_tb_BaiViet">
+      <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+      <End Role="tb_Comment" EntitySet="tb_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_LSBaiViet_tb_BaiViet" Association="NewsModel.FK_tb_LSBaiViet_tb_BaiViet">
+      <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+      <End Role="tb_LSBaiViet" EntitySet="tb_LSBaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Role_tb_ChuyenMuc" Association="NewsModel.FK_tb_Role_tb_ChuyenMuc">
+      <End Role="tb_ChuyenMuc" EntitySet="tb_ChuyenMuc" />
+      <End Role="tb_Role" EntitySet="tb_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Comment_tb_User" Association="NewsModel.FK_tb_Comment_tb_User">
+      <End Role="tb_User" EntitySet="tb_User" />
+      <End Role="tb_Comment" EntitySet="tb_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Role_tb_LoaiTK" Association="NewsModel.FK_tb_Role_tb_LoaiTK">
+      <End Role="tb_LoaiTK" EntitySet="tb_LoaiTK" />
+      <End Role="tb_Role" EntitySet="tb_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_LSBaiViet_tb_User" Association="NewsModel.FK_tb_LSBaiViet_tb_User">
+      <End Role="tb_User" EntitySet="tb_User" />
+      <End Role="tb_LSBaiViet" EntitySet="tb_LSBaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Role_tb_User" Association="NewsModel.FK_tb_Role_tb_User">
+      <End Role="tb_User" EntitySet="tb_User" />
+      <End Role="tb_Role" EntitySet="tb_Role" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spThongKe_Edit_Result">
+    <Property Type="Int64" Name="HomNay" Nullable="true" />
+    <Property Type="Int64" Name="HomQua" Nullable="true" />
+    <Property Type="Int64" Name="TuanNay" Nullable="true" />
+    <Property Type="Int64" Name="TuanTruoc" Nullable="true" />
+    <Property Type="Int64" Name="ThangNay" Nullable="true" />
+    <Property Type="Int64" Name="ThangTruoc" Nullable="true" />
+    <Property Type="Int64" Name="TatCa" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tb_BaiViet">
+    <Key>
+      <PropertyRef Name="ID_BaiViet" />
+    </Key>
+    <Property Name="ID_BaiViet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBaiViet" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ID_User" Type="Int32" />
+    <Property Name="ID_ChuyenMuc" Type="Int32" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TomTat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TGViet" Type="DateTime" Precision="3" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="LuotXem" Type="Double" />
+    <NavigationProperty Name="tb_ChuyenMuc" Relationship="NewsModel.FK_tb_BaiViet_tb_ChuyenMuc" FromRole="tb_BaiViet" ToRole="tb_ChuyenMuc" />
+    <NavigationProperty Name="tb_User" Relationship="NewsModel.FK_tb_BaiViet_tb_User" FromRole="tb_BaiViet" ToRole="tb_User" />
+    <NavigationProperty Name="tb_Comment" Relationship="NewsModel.FK_tb_Comment_tb_BaiViet" FromRole="tb_BaiViet" ToRole="tb_Comment" />
+    <NavigationProperty Name="tb_LSBaiViet" Relationship="NewsModel.FK_tb_LSBaiViet_tb_BaiViet" FromRole="tb_BaiViet" ToRole="tb_LSBaiViet" />
+  </EntityType>
+  <EntityType Name="tb_ChuyenMuc">
+    <Key>
+      <PropertyRef Name="ID_ChuyenMuc" />
+    </Key>
+    <Property Name="ID_ChuyenMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenChuyenMuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_ChuyenMucCha" Type="Int32" />
+    <NavigationProperty Name="tb_BaiViet" Relationship="NewsModel.FK_tb_BaiViet_tb_ChuyenMuc" FromRole="tb_ChuyenMuc" ToRole="tb_BaiViet" />
+    <NavigationProperty Name="tb_Role" Relationship="NewsModel.FK_tb_Role_tb_ChuyenMuc" FromRole="tb_ChuyenMuc" ToRole="tb_Role" />
+  </EntityType>
+  <EntityType Name="tb_Comment">
+    <Key>
+      <PropertyRef Name="ID_Comment" />
+    </Key>
+    <Property Name="ID_Comment" Type="Int32" Nullable="false" />
+    <Property Name="ID_BaiViet" Type="Int32" />
+    <Property Name="ID_User" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_BaiViet" Relationship="NewsModel.FK_tb_Comment_tb_BaiViet" FromRole="tb_Comment" ToRole="tb_BaiViet" />
+    <NavigationProperty Name="tb_User" Relationship="NewsModel.FK_tb_Comment_tb_User" FromRole="tb_Comment" ToRole="tb_User" />
+  </EntityType>
+  <EntityType Name="tb_LoaiTK">
+    <Key>
+      <PropertyRef Name="ID_LoaiTK" />
+    </Key>
+    <Property Name="ID_LoaiTK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiTK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_Role" Relationship="NewsModel.FK_tb_Role_tb_LoaiTK" FromRole="tb_LoaiTK" ToRole="tb_Role" />
+  </EntityType>
+  <EntityType Name="tb_LSBaiViet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_User" Type="Int32" />
+    <Property Name="ID_BaiViet" Type="Int32" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_BaiViet" Relationship="NewsModel.FK_tb_LSBaiViet_tb_BaiViet" FromRole="tb_LSBaiViet" ToRole="tb_BaiViet" />
+    <NavigationProperty Name="tb_User" Relationship="NewsModel.FK_tb_LSBaiViet_tb_User" FromRole="tb_LSBaiViet" ToRole="tb_User" />
+  </EntityType>
+  <EntityType Name="tb_QuangCao">
+    <Key>
+      <PropertyRef Name="ID_QuangCao" />
+    </Key>
+    <Property Name="ID_QuangCao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CongTy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDang" Type="DateTime" Precision="3" />
+    <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tb_Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_User" Type="Int32" />
+    <Property Name="ID_ChuyenMuc" Type="Int32" />
+    <Property Name="ID_LoaiTK" Type="Int32" />
+    <NavigationProperty Name="tb_ChuyenMuc" Relationship="NewsModel.FK_tb_Role_tb_ChuyenMuc" FromRole="tb_Role" ToRole="tb_ChuyenMuc" />
+    <NavigationProperty Name="tb_LoaiTK" Relationship="NewsModel.FK_tb_Role_tb_LoaiTK" FromRole="tb_Role" ToRole="tb_LoaiTK" />
+    <NavigationProperty Name="tb_User" Relationship="NewsModel.FK_tb_Role_tb_User" FromRole="tb_Role" ToRole="tb_User" />
+  </EntityType>
+  <EntityType Name="tb_User">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_LoaiTK" Type="Int32" />
+    <Property Name="TenUser" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_BaiViet" Relationship="NewsModel.FK_tb_BaiViet_tb_User" FromRole="tb_User" ToRole="tb_BaiViet" />
+    <NavigationProperty Name="tb_Comment" Relationship="NewsModel.FK_tb_Comment_tb_User" FromRole="tb_User" ToRole="tb_Comment" />
+    <NavigationProperty Name="tb_LSBaiViet" Relationship="NewsModel.FK_tb_LSBaiViet_tb_User" FromRole="tb_User" ToRole="tb_LSBaiViet" />
+    <NavigationProperty Name="tb_Role" Relationship="NewsModel.FK_tb_Role_tb_User" FromRole="tb_User" ToRole="tb_Role" />
+  </EntityType>
+  <EntityType Name="ThongKe">
+    <Key>
+      <PropertyRef Name="MaTB" />
+    </Key>
+    <Property Name="MaTB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SoTruyCap" Type="Int64" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tb_BaiViet_tb_ChuyenMuc">
+    <End Type="NewsModel.tb_ChuyenMuc" Role="tb_ChuyenMuc" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_BaiViet" Role="tb_BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_ChuyenMuc">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Principal>
+      <Dependent Role="tb_BaiViet">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_BaiViet_tb_User">
+    <End Type="NewsModel.tb_User" Role="tb_User" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_BaiViet" Role="tb_BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="tb_BaiViet">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Comment_tb_BaiViet">
+    <End Type="NewsModel.tb_BaiViet" Role="tb_BaiViet" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_Comment" Role="tb_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="tb_Comment">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_LSBaiViet_tb_BaiViet">
+    <End Type="NewsModel.tb_BaiViet" Role="tb_BaiViet" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_LSBaiViet" Role="tb_LSBaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_BaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Principal>
+      <Dependent Role="tb_LSBaiViet">
+        <PropertyRef Name="ID_BaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Role_tb_ChuyenMuc">
+    <End Type="NewsModel.tb_ChuyenMuc" Role="tb_ChuyenMuc" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_Role" Role="tb_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_ChuyenMuc">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Principal>
+      <Dependent Role="tb_Role">
+        <PropertyRef Name="ID_ChuyenMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Comment_tb_User">
+    <End Type="NewsModel.tb_User" Role="tb_User" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_Comment" Role="tb_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="tb_Comment">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Role_tb_LoaiTK">
+    <End Type="NewsModel.tb_LoaiTK" Role="tb_LoaiTK" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_Role" Role="tb_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_LoaiTK">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Principal>
+      <Dependent Role="tb_Role">
+        <PropertyRef Name="ID_LoaiTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_LSBaiViet_tb_User">
+    <End Type="NewsModel.tb_User" Role="tb_User" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_LSBaiViet" Role="tb_LSBaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="tb_LSBaiViet">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Role_tb_User">
+    <End Type="NewsModel.tb_User" Role="tb_User" Multiplicity="0..1" />
+    <End Type="NewsModel.tb_Role" Role="tb_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_User">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="tb_Role">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
